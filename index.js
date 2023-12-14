@@ -1,6 +1,5 @@
 import { isString, merge, isArray, forEach, isFunction, includes } from 'lodash'
 import * as cheerio from 'cheerio'
-const S = require('string')
 const AutoLink = {}
 
 
@@ -82,7 +81,7 @@ AutoLink.link = (html, option) => {
 		newNode.html('');
 		node.contents().each(function() {
 			if (this.type === 'text') {
-				newNode.append(replaceURLWithHTMLLinks(S(this.data).escapeHTML().s));
+				newNode.append(replaceURLWithHTMLLinks(this.data));
 			} else {
 				var n = $(this);
 				if (noLink(n)) {
